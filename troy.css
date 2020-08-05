@@ -1,306 +1,110 @@
-/* I LOVE CSS */
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-
-::after,
-::before {
-  text-decoration: inherit;
-  vertical-align: inherit;
+/*
+* Throw sanitize.css up here to keep everything else in check
+*/
+:root {
+  /* you've probably got some variable you like, right? */
+  --gap: 1em;
 }
 
 html {
-  cursor: default;
-  line-height: 1.5;
-  -moz-tab-size: 4;
-  tab-size: 4;
-  -webkit-tap-highlight-color: transparent;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  word-break: break-word;
   min-height: 100vh;
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-h1 {
-  font-size: 2em;
-  margin: .67em 0;
-}
-
-dl dl,
-dl ol,
-dl ul,
-ol dl,
-ul dl {
-  margin: 0;
-}
-
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-  margin: 0;
-}
-
-hr {
-  height: 0;
-  overflow: visible;
-}
-
-main {
-  display: block;
-}
-
-nav ol,
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-pre {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-a {
-  background-color: transparent;
-}
-
-abbr[title] {
-  text-decoration: underline;
-  text-decoration: underline dotted;
-}
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-small {
-  font-size: 80%;
-}
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-audio,
-video {
-  display: inline-block;
-}
-
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-iframe {
-  border-style: none;
-}
-
 img {
-  border-style: none;
-}
-
-svg:not([fill]) {
-  fill: currentColor;
-}
-
-svg:not(:root) {
-  overflow: hidden;
-}
-
-table {
-  border-collapse: collapse;
-}
-
-button,
-input,
-select {
-  margin: 0;
-}
-
-button {
-  overflow: visible;
-  text-transform: none;
-}
-
-[type="button"],
-[type="reset"],
-[type="submit"],
-button {
-  -webkit-appearance: button;
-}
-
-fieldset {
-  border: 1px solid #a0a0a0;
-  padding: .35em .75em .625em;
-}
-
-input {
-  overflow: visible;
-}
-
-legend {
-  color: inherit;
-  display: table;
+  display: block;
   max-width: 100%;
-  white-space: normal;
-}
-
-progress {
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-select {
-  text-transform: none;
-}
-
-textarea {
-  margin: 0;
-  overflow: auto;
-  resize: vertical;
-}
-
-[type="checkbox"],
-[type="radio"] {
-  padding: 0;
-}
-
-[type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
-}
-
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
+  margin: auto;
   height: auto;
 }
-
-::-webkit-input-placeholder {
-  color: inherit;
-  opacity: .54;
+/* Be super sure the height is set to auto for aspect ratios and such using HTML size attributes */
+img[height] {
+  height: auto;
+}
+/* Never really liked margins on my headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+/* Use this class instead to put margins on my headings */
+.headline {
+  margin-bottom: 1em;
 }
 
-::-webkit-search-decoration {
-  -webkit-appearance: none;
+.wrapper {
+  width: 95%;
+  max-width: 1600px;
 }
 
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit;
+.wrapper[data-constrain="more"] {
+  max-width: 1100px !important;
 }
 
-::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
+.wrapper[data-constrain="most"] {
+  max-width: 600px !important;
 }
 
-:-moz-focusring {
-  outline: 1px dotted ButtonText;
+.flex {
+  display: flex;
 }
 
-:-moz-ui-invalid {
-  box-shadow: none;
+.col {
+  flex-direction: column;
+}
+/* I hear you asking "but what if something needs to be row-reverse?" and well, I haven't had that happen yet so we'll cross that bridge when we get there */
+*[data-state="reversed"] {
+  flex-direction: column-reverse !important;
 }
 
-details {
-  display: block;
+.full {
+  width: 100%;
 }
 
-dialog {
-  background-color: white;
-  border: solid;
-  color: black;
-  display: block;
-  height: -moz-fit-content;
-  height: -webkit-fit-content;
-  height: fit-content;
-  left: 0;
-  margin: auto;
-  padding: 1em;
-  position: absolute;
-  right: 0;
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
-  width: fit-content;
+.grid {
+  display: grid;
+  gap: var(--gap);
 }
 
-dialog:not([open]) {
-  display: none;
+.two-col {
+  grid-template-columns: repeat(2, 1fr);
 }
 
-summary {
-  display: list-item;
+.three-col {
+  grid-template-columns: repeat(3, 1fr);
 }
 
-canvas {
-  display: inline-block;
+.place-center {
+  place-items: center;
 }
 
-template {
-  display: none;
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-[tabindex],
-a,
-area,
-button,
-input,
-label,
-select,
-summary,
-textarea {
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
+.wrap {
+  flex-wrap: wrap;
 }
 
-[hidden] {
-  display: none !important;
+.center {
+  text-align: center;
 }
 
-[aria-busy="true"] {
-  cursor: progress;
+.italic {
+  font-style: italic;
 }
 
-[aria-controls] {
-  cursor: pointer;
-}
-
-[aria-disabled="true"],
-[disabled] {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: .3;
-}
-
-[aria-hidden="false"][hidden] {
-  display: initial;
-}
-
-[aria-hidden="false"][hidden]:not(:focus) {
-  clip: rect(0, 0, 0, 0);
-  position: absolute;
+.bold {
+  font-weight: 700;
 }
