@@ -2,7 +2,9 @@
 A safe haven for some useful files.
 
 ```
-if (let feeling === "cute") {
+let feeling;
+
+if (feeling === "cute") {
 console.log("might make private later");
 };
 ```
