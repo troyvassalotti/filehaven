@@ -1,9 +1,19 @@
 /*
-* Throw sanitize.css up here to keep everything else in check
-* Inspired by Sanitize, Normalize, and monica.css
+* Don't forget to put normalize or sanitize before this
+* if using normalize, make sure box-sizing is border-box
+* if using sanitize, make sure to remove cursor: default from the html
 */
 :root {
   /* you've probably got some variable you like, right? */
+  /* these are for fluid font sizes */
+  --step--2: clamp(0.9113rem, 0.8922rem + 0.0951vw, 0.96rem);
+  --step--1: clamp(1.0938rem, 1.0523rem + 0.2073vw, 1.2rem);
+  --step-0: clamp(1.3125rem, 1.2393rem + 0.3659vw, 1.5rem);
+  --step-1: clamp(1.575rem, 1.4579rem + 0.5854vw, 1.875rem);
+  --step-2: clamp(1.89rem, 1.7129rem + 0.8854vw, 2.3438rem);
+  --step-3: clamp(2.2681rem, 2.0098rem + 1.2915vw, 2.93rem);
+  --step-4: clamp(2.7219rem, 2.355rem + 1.8341vw, 3.6619rem);
+  --step-5: clamp(3.2656rem, 2.7537rem + 2.5598vw, 4.5775rem);
   --gap: 1em;
 }
 
