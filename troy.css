@@ -115,6 +115,14 @@ pre {
     grid-template-columns: repeat(3, minmax(10px, 1fr));
 }
 
+.four-col {
+    grid-template-columns: repeat(4, minmax(10px, 1fr));
+}
+
+.fluid-col {
+    grid-template-columns: repeat(auto-fill, minmax(20rem,1fr));
+}
+
 .place-center {
     place-items: center;
 }
@@ -127,29 +135,6 @@ pre {
 
 .wrap {
     flex-wrap: wrap;
-}
-
-.video-embed {
-    display: block;
-    margin-block-end: clamp(1ex, 5vw, 6ex);
-    contain: content;
-    position: relative;
-    width: 100%;
-}
-
-.video-embed::after {
-    content: "";
-    display: block;
-    padding-block-end: calc(100% / (16 / 9));
-}
-
-.video-embed iframe {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    aspect-ratio: 16 / 9;
 }
 
 .center {
@@ -179,26 +164,42 @@ h6 {
     margin: 0;
 }
 
-h1 {
+h1, .font-lg-6 {
     font-size: var(--step-6);
 }
 
-h2 {
+h2, .font-lg-5 {
     font-size: var(--step-5);
 }
 
-h3 {
+h3, .font-lg-3 {
     font-size: var(--step-3);
 }
 
-h4 {
+h4, .font-lg-2 {
     font-size: var(--step-2);
 }
 
-h5 {
+h5, .font-lg-1 {
     font-size: var(--step-1);
 }
 
-h6 {
+h6, .font-base {
     font-size: var(--step-0);
+}
+
+.font-lg-4 {
+    font-size: var(--step-4);
+}
+
+.font-sm-1 {
+    font-size: var(--step--1);
+}
+
+.font-sm-2 {
+    font-size: var(--step--2);
+}
+
+.font-sm-3 {
+    font-size: var(--step--3);
 }
