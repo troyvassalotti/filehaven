@@ -1,4 +1,80 @@
-:root {
+/* Modern CSS Reset from https://piccalil.li/blog/a-modern-css-reset/ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+html {
     /* @link https://utopia.fyi/generator-mk-ii?c=320,18,1.2,1140,21,1.25,6,3, */
     --step--3: clamp(0.6513rem, 0.5949rem + 0.2817vw, 0.7956rem);
     --step--2: clamp(0.7813rem, 0.7134rem + 0.339vw, 0.955rem);
@@ -14,28 +90,13 @@
     --system-sans: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
     --system-serif: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     --system-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-    --gap: 1em;
-}
-
-html {
-    line-height: 1.5;
-    word-wrap: anywhere;
-    font-family: var(--system-sans);
 }
 
 body {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    min-height: 100vh;
     font-size: var(--step-0);
-}
-
-img {
-    display: block;
-    max-width: 100%;
-    margin: auto;
-    height: auto;
+    font-family: var(--system-sans);
+    word-wrap: anywhere;
 }
 
 img[height] {
@@ -61,22 +122,33 @@ pre {
     flex-direction: column;
 }
 
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
 .wrapper {
+    --max: 100rem;
     width: 95%;
-    max-width: 100rem;
+    max-width: var(--max);
     margin: auto;
 }
 
 .wrapper[data-constrain="some"] {
-    max-width: 81.25rem !important;
+    --max: 81.25rem !important;
 }
 
 .wrapper[data-constrain="more"] {
-    max-width: 68.75rem !important;
+    --max: 68.75rem !important;
 }
 
 .wrapper[data-constrain="most"] {
-    max-width: 37.5rem !important;
+    --max: 37.5rem !important;
 }
 
 .full {
@@ -101,43 +173,37 @@ pre {
 
 .grid {
     display: grid;
+    --min-size: 10px;
 }
 
 .gap {
+    --gap: 1em;
     gap: var(--gap);
 }
 
 .two-col {
-    grid-template-columns: repeat(2, minmax(10px, 1fr));
+    grid-template-columns: repeat(2, minmax(var(--min-size), 1fr));
 }
 
 .three-col {
-    grid-template-columns: repeat(3, minmax(10px, 1fr));
+    grid-template-columns: repeat(3, minmax(var(--min-size), 1fr));
 }
 
 .four-col {
-    grid-template-columns: repeat(4, minmax(10px, 1fr));
+    grid-template-columns: repeat(4, minmax(var(--min-size), 1fr));
 }
 
 .fluid-col {
-    grid-template-columns: repeat(auto-fill, minmax(20rem,1fr));
+    --fluid-size: 20rem;
+    --fluid-type: auto-fit;
+    grid-template-columns: repeat(var(--fluid-type), minmax(var(--fluid-size),1fr));
 }
 
 .place-center {
     place-items: center;
 }
 
-.flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.wrap {
-    flex-wrap: wrap;
-}
-
-.center {
+.text-center {
     text-align: center;
 }
 
@@ -149,11 +215,6 @@ pre {
     font-weight: 700;
 }
 
-.no-list {
-    list-style: none;
-    padding: 0;
-}
-
 h1,
 h2,
 h3,
@@ -161,35 +222,34 @@ h4,
 h5,
 h6 {
     font-family: var(--system-serif);
-    margin: 0;
 }
 
-h1, .font-lg-6 {
+.font-lg-6 {
     font-size: var(--step-6);
 }
 
-h2, .font-lg-5 {
+.font-lg-5 {
     font-size: var(--step-5);
-}
-
-h3, .font-lg-3 {
-    font-size: var(--step-3);
-}
-
-h4, .font-lg-2 {
-    font-size: var(--step-2);
-}
-
-h5, .font-lg-1 {
-    font-size: var(--step-1);
-}
-
-h6, .font-base {
-    font-size: var(--step-0);
 }
 
 .font-lg-4 {
     font-size: var(--step-4);
+}
+
+.font-lg-3 {
+    font-size: var(--step-3);
+}
+
+.font-lg-2 {
+    font-size: var(--step-2);
+}
+
+.font-lg-1 {
+    font-size: var(--step-1);
+}
+
+.font-base {
+    font-size: var(--step-0);
 }
 
 .font-sm-1 {
